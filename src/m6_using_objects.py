@@ -5,8 +5,8 @@ This module lets you practice  ** using objects **, including:
   -- accessing their DATA via INSTANCE VARIABLES
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and David Ardy.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -14,7 +14,8 @@ import rosegraphics as rg
 def main():
     """ Calls the other functions to demonstrate and/or test them. """
     # Test your functions by putting calls to them here:
-
+    two_circles()
+    circle_and_rectangle()
 
 def two_circles():
     """
@@ -26,8 +27,24 @@ def two_circles():
            -- One is filled with some color and one is not filled.
     -- Waits for the user to press the mouse, then closes the window.
     """
+
+    window = rg.RoseWindow(300, 300, 'two circles window')
+
+    center1 = rg.Point(50, 50)
+    circle1 = rg.Circle(center1, 45)
+    circle1.attach_to(window)
+
+    center2 = rg.Point(100, 150)
+    circle2 = rg.Circle(center2, 60)
+    circle2.fill_color = 'azure'
+    circle2.attach_to(window)
+
+    window.render()
+
+    window.close_on_mouse_click()
+
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this function, per its doc-string above.
+    # DONE: 2. Implement this function, per its doc-string above.
     #    -- ANY two rg.Circle objects that meet the criteria are fine.
     #    -- File  COLORS.txt  lists all legal color-names.
     # Put a statement in   main   to test this function
@@ -66,8 +83,42 @@ def circle_and_rectangle():
            75.0
            150.0
     """
+
+    window = rg.RoseWindow(300, 300, 'Circle and Square Window')
+
+    x1 = 100
+    y1 = 150
+    color_circle = 'blue'
+    center_circle = rg.Point(x1, y1)
+    circle = rg.Circle(center_circle, 60)
+    circle.fill_color = color_circle
+    cot = circle.outline_thickness = 1
+    circle.attach_to(window)
+
+    x2 = 200
+    y2 = 100
+    center_square = rg.Point(x2, y2)
+    square = rg.Square(center_square, 50)
+    sot = square.outline_thickness = 1
+    square.attach_to(window)
+
+    print(cot)
+    print(color_circle)
+    print('Point(', x1, ', ', y1, ')')
+    print(x1)
+    print(y1)
+    print(sot)
+    print('None')
+    print('Point(', x2, ', ', y2, ')')
+    print(x2)
+    print(y2)
+
+    window.render()
+
+    window.close_on_mouse_click()
+
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this function, per its doc-string above.
+    # DONE: 3. Implement this function, per its doc-string above.
     #   -- ANY objects that meet the criteria are fine.
     # Put a statement in   main   to test this function
     #    (by calling this function).
